@@ -1,0 +1,54 @@
+// event_notes.js
+
+// Learning about Events and addEventListener in JavaScript
+
+// Get the element by its ID
+const element = document.getElementById('myBtn');
+
+// Add an event listener to the element
+// This will call the myFunction when the button is clicked
+element.addEventListener("click", myFunction);
+
+/*
+The addEventListener() method attaches an event handler to an element without overwriting existing event handlers. 
+Syntax: element.addEventListener(event, function, useCapture)
+Parameters:
+  event: A string that specifies the name of the event (e.g., "click", "mouseover").
+  function: Specifies the function to run when the event occurs.
+  useCapture: A Boolean that indicates whether events should be executed in the capturing or in the bubbling phase. Default is false.
+*/
+
+function myFunction() {
+  // Change the inner HTML of the element with id="demo" to "Hello World"
+  document.getElementById("demo").innerHTML = "Hello World";
+}
+
+// Example: Adding multiple event listeners to the same element
+element.addEventListener("mouseover", function() {
+  element.style.backgroundColor = 'yellow'; // Change background color to yellow on mouseover
+});
+
+element.addEventListener("mouseout", function() {
+  element.style.backgroundColor = ''; // Reset background color on mouseout
+});
+
+/*
+The addEventListener() method allows adding multiple event handlers to the same element for the same event. 
+This is one of the key advantages over using the traditional event handlers like onclick, onmouseover, etc.
+*/
+
+// Example: Changing background color on each click using a loop
+element.addEventListener("click", function() {
+  const colors = ['red', 'green', 'blue', 'yellow'];
+  for (let i = 0; i < colors.length; i++) {
+    setTimeout(function() {
+      element.style.backgroundColor = colors[i];
+    }, i * 500); // Change color every 500ms
+  }
+});
+
+/*
+The above code demonstrates how to use a loop to change the background color on each click.
+It utilizes the setTimeout function to change the color at intervals.
+This shows the combination of event handling and loops in JavaScript.
+*/
